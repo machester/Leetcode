@@ -91,36 +91,33 @@ listTypde* addTwoNumbers(listTypde* l1, listTypde* l2)
 	while ((NULL != tempL1) || (NULL != tempL2))
 	{
 		newNode = (struct ListNode *)malloc(sizeof(struct ListNode));
-
+		/* if list length is not equal ------------------------------------*/
+		/* remember clear the increase flag after add operation -----------*/
 		if (NULL == tempL1)
 		{
-			sum = tempL2 ->val;
+			sum = tempL2 ->val + increaseFlag;
+			increaseFlag = 0;
 		}
 		else if (NULL == tempL2)
 		{
-			sum = tempL1 ->val;
+			sum = tempL1 ->val + increaseFlag;
+			increaseFlag = 0;
 		}
 		else
-			sum = ((tempL1 ->val) + (tempL2 ->val));
-
+		{
+			sum = ((tempL1 ->val) + (tempL2 ->val)) + increaseFlag;
+			increaseFlag = 0;
+		}
+		/*----------------------------------------------------------------*/
+		/* if answer has increase bit ------------------------------------*/
 		if (sum > 9)
 		{
 			sum = (sum - 10);
 			increaseFlag = 1;
 		}
-		else
-		{
-			sum = sum + increaseFlag;
-			if (sum > 9)
-			{
-				sum = (sum - 10);
-				increaseFlag = 0;
-			}
-			increaseFlag = 0;
-		}
 
 		newNode ->val = sum;
-
+		/* list operation -----------------------------------------------*/
 		if (NULL == tempL1)
 		{
 			tempL2 = tempL2 ->next;
@@ -149,7 +146,7 @@ listTypde* addTwoNumbers(listTypde* l1, listTypde* l2)
 		newList ->next = newNode;
 		newNode ->next = NULL;
 	}
-
+	/* return list remember cut the head ------------------------------*/
 	return (newListHead ->next);
 }
 
