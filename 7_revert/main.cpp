@@ -2,69 +2,65 @@
  * 链栈
  */
 #include <iostream>
-#include <cmath>
-
+#define DEBUG
 using namespace std;
 
 class Solution {
 public:
     ~Solution();
 
-    int reverse(int x)
-    {
-        typedef struct _node{
+    int reverse(int x) {
+        typedef struct _node {
             int param;
             struct _node *next;
 
-
-        }stackNode;
-        stackNode *LLstack = new(stackNode);
-        LLstack ->next = NULL;
+        } stackNode;
+        struct _node *Lstack_top = NULL;
 
 
         int revertedNum = 0;
         int index = 0;
         int temp = x;
 
-        if(x == 0)
+        if (x == 0)
             return 0;
 
-        if(x > 0) {
-            //push stack
-            while (temp)
-            {
-                ++index;
+        if (x < 0)
+            temp = temp * (-1);
 
-                stackNode *newNode = new(stackNode);
-                newNode ->next = NULL;
-                newNode -> param = temp % 10;
-                newNode ->next = LLstack ->next;
-                LLstack ->next = newNode;
+        //push stack
+        while (temp) {
+            ++index;
 
-                temp /= 10;
+            struct _node *newNode = new(struct _node);
+            newNode->param = temp % 10;
+            newNode->next = Lstack_top;
+            Lstack_top = newNode;
 
-                cout << "index = " << index << " temp = " << temp << endl;
-                cout << "index = " << index << " newNode- >param = " << newNode ->param << endl;
-            }
+            temp /= 10;
+            cout << "index = " << index << " newNode- >param = " << newNode->param << endl;
         }
-        else {
-                    temp = temp * (-1);
-        }
+#ifdef DEBUG
+        //printf stack
+        struct _node *p;
+        for (p = Lstack_top; p != NULL; p = p->next)
+            cout << "---> " << p->param;
+        cout << endl;
+#endif
+
         cout << "pop stack : " << endl;
-        LLstack = LLstack ->next;
-        for(; index > 0; index--)
-        {
-            revertedNum += LLstack ->param;
+        for (; index > 0; index--) {
+            revertedNum += Lstack_top->param;
             revertedNum *= 10;
-            LLstack = LLstack ->next;
+            Lstack_top = Lstack_top->next;
         }
         revertedNum /= 10;
-        return  revertedNum;
+        if (x < 0)
+            return revertedNum * -1;
+        else
+            return revertedNum;
 
     }
-
-private:
-
 };
 
 int main() {
@@ -76,10 +72,10 @@ int main() {
     cin >> num;
     Solution solution;
 
-
+    int returnVal = solution.reverse(num);
     cout << "reverted num is : "
-            << solution.reverse(num)
-            << endl;
+         << returnVal
+         << endl;
 
     return 0;
 }
