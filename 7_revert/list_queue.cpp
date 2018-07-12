@@ -54,14 +54,13 @@ public:
         for (tt = queHead ->next; tt != queTail; tt = tt ->next) {
             revertedNum += tt->param;
             cout << "revertNumber = " << revertedNum << endl;
-            revertedNum *= 10;          //add 10 times for next data;
-
+            revertedNum *= 10;          //move positon
         }
         revertedNum += tt ->param; // last one
         cout << "revertNumber = " << revertedNum << endl;
 
         //溢出判定
-        if((revertedNum > 2147483648 -1) || (revertedNum < (-2147483648)))
+        if ((revertedNum > 2147483648 - 1) || (revertedNum < (-2147483648)))
             return 0;
         else
             return revertedNum;

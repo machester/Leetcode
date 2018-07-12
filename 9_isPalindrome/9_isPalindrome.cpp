@@ -1,9 +1,9 @@
 /*
-* invert number and compare to the orignal number
+* using stack FILO invert number and compare to the orignal number
 * if equal return true else return false
 * situation:
 *	1. noun is always false,because of "-".
-*	2. if number < 10, means also true.
+*	2. if number < 10, means always true.
 */
 #include <iostream>
 #include <vector>
@@ -30,11 +30,11 @@ public:
 		cout << endl;
 
 		for (vector<int>::iterator item = tempArry.begin(); item != tempArry.end(); item++) {
-			tempX += *item;
-			tempX *= 10;
-			cout << "tempX = " << tempX << endl;
+			tempX += *item;		//get value
+			cout << "tempX = " << tempX << endl;		//show current value
+			tempX *= 10;		//move positon
 		}
-		tempX /= 10;
+		tempX /= 10;		//remember cut the tail.
 		cout << "tempX = " << tempX << endl;
 		if (tempX == x)
 			return true;
