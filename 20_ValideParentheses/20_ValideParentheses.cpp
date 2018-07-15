@@ -1,3 +1,9 @@
+/*
+ * for specifical characteries
+ * 		1. if true , stringn item must not a odd
+ * 		2. empty string is true by default set
+ * 		3. if finishend compare, vector must be empty
+*/
 #include <iostream>
 #include <string>
 #include <vector>
