@@ -1,3 +1,0 @@
-/Volumes/Transcend/SourceTree_Clone/Leetcode/4.findMedianSortedArrys/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Volumes/Transcend/SourceTree_Clone/Leetcode/4.findMedianSortedArrys/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Volumes/Transcend/SourceTree_Clone/Leetcode/4.findMedianSortedArrys/cmake-build-debug/CMakeFiles/4_findMedianSortedArrys.dir
