@@ -3,11 +3,11 @@
 # $(shell echo `"---------------- start compile --------------------"`)
 
 # show g++ version
-$(shell echo `g++ -v`)
+# $(shell echo `g++ -v`)
 
 CC = g++
 
-TAR = 066_plus_one
+TAR = 067_add_binary
 SOURCE = $(TAR).cpp
 
 # $(shell echo "source = "$(SOURCE))

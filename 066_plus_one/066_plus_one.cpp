@@ -39,27 +39,51 @@ class Solution {
 public:
     ~Solution();
     vector<int> plusOne(vector<int>& digits);
+    void show_item(vector<int> digits);
 };
 
-int main() {
-
+int main() 
+{
     vector<int> foo;
-    for(int index = 1; index < 5; index++) {
+    vector<int> res;
+    for(int index = 1; index < 10; index++) {
         foo.push_back(index);
     }
     
     Solution solution;
-    solution.plusOne(foo);
-    for(vector<int> iterator item = foo.begin(); item < foo.end())
+    solution.show_item(foo);
+    res = solution.plusOne(foo);
+    solution.show_item(res);
     return 0;
 }
 
-Solution::vector<int> plusOne(vector<int>& digits)
+void Solution::show_item(vector<int> digits)
+{
+    cout << "item = { ";
+    for(vector<int>::iterator item = digits.begin(); item < digits.end(); item++) {
+        cout << *item << " ";
+    }
+    cout << " }" << endl;
+}
+
+vector<int>Solution::plusOne(vector<int>& digits)
 {
     cout << "------------- start ---------" << endl;
-    if (s.empty())
+    if (digits.empty())
         return digits;
         
+    int len = digits.size();
+     
+    for (int index = len - 1; index >= 0; --index) {
+        if (digits[index] == 9) digits[index] = 0;
+        else {          // incrase and return
+            digits[index] += 1;
+            return digits;
+        }
+    }
+    // if pre steps has done, and front number is zero
+    if (digits.front() == 0) digits.insert(digits.begin(), 1);
+        return digits;
 }
 
 Solution::~Solution() 
