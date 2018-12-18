@@ -15,8 +15,6 @@ SOURCE = $(TAR).cpp
 ALL: $(TAR).o
 	$(CC) -o $(TAR) $(SOURCE)
 clean:
-	rm -rf $(TAR).o
-cleanall:
 	rm -rvf $(TAR).o
 	rm -rvf $(TAR)
 
