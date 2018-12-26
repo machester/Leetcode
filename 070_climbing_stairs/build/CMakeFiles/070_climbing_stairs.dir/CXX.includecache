@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/d/git_code/Leetcode/070_climbing_stairs/070_climbing_stairs.cpp
+iostream
+-
+vector
+-
+string
+-
+algorithm
+-
+

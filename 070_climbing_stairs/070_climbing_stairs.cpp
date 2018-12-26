@@ -13,6 +13,7 @@ Output: 2
 Explanation: There are two ways to climb to the top.
 1. 1 step + 1 step
 2. 2 steps
+
 Example 2:
 
 Input: 3
@@ -36,15 +37,16 @@ class Solution {
 public:
     ~Solution();
     int climbStairs(int n);
+    void recursive(int input, int& output);
     void show_string(string str);
 };
 
 int main() 
 {
-    int x = 8192;
+    int x = 3;
     Solution solution;
     int y = solution.climbStairs(x);
-    cout << "x sqrt is: " << y << endl;  
+    cout << "need " << y << " steps" << endl;
     // solution.show_string(after_operation);
     return 0;
 }
@@ -52,25 +54,33 @@ int main()
 void Solution::show_string(string str)
 {
     cout << "string is : " << str << endl;
-    
 }
 
 int Solution::climbStairs(int n)
 {
     cout << "------------- start ---------" << endl;
-    int retval;
+    cout << "target step is " << n << endl;
+    int val = n;
+    int  counter = 0;
     
-    
-    
-    
-    
-    
-    
-    
-    
-    return retval;    
+    if (1 == n || 2 == n)
+        return n;
+        
+    cout << "counter = " << counter << ", val = " << val << endl;
+    Solution::recursive(val, counter);
+    return counter;
 }
-
+void Solution::recursive(int input, int& output)
+{
+    if(input > 0){
+        cout << "input = " << input << ", output = " << output << endl;
+        input = input / 2;
+        output += 1;
+        return Solution::recursive(input, output);
+    } 
+    cout << "-------------------------------------------------"<< endl;
+    cout << "input = " << input << ", output = " << output << endl;
+}
 Solution::~Solution() 
 {
     cout << "------------- end ---------" << endl;    

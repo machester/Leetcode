@@ -14,7 +14,8 @@ SOURCE = $(TAR).cpp
 
 ALL: $(TAR).o
 	$(CC) -o $(TAR) $(SOURCE)
-clean:
+    
+.PHONY:clean
 	rm -rvf $(TAR).o
 	rm -rvf $(TAR)
 

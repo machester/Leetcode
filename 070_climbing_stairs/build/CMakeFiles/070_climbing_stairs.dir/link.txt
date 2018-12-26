@@ -1,0 +1,1 @@
+/usr/bin/c++.exe    -Wl,--enable-auto-import CMakeFiles/070_climbing_stairs.dir/cygdrive/d/git_code/Leetcode/070_climbing_stairs/070_climbing_stairs.cpp.o  -o 070_climbing_stairs.exe -Wl,--out-implib,lib070_climbing_stairs.dll.a -Wl,--major-image-version,0,--minor-image-version,0  

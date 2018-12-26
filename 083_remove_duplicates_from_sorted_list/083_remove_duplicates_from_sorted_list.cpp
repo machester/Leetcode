@@ -6,6 +6,7 @@ Example 1:
 
 Input: 1->1->2
 Output: 1->2
+
 Example 2:
 
 Input: 1->1->2->3->3
@@ -36,20 +37,31 @@ public:
 
 using namespace std;
 
+
+
 class Solution {
 public:
+    struct ListNode {
+        int val;
+        ListNode *next;
+        ListNode(int x) : val(x), next(NULL) {};
+    };
+    
     ~Solution();
-    int climbStairs(int n);
+    ListNode* deleteDuplicates(ListNode* head);
     void show_string(string str);
+    
+
 };
 
 int main() 
 {
     int x = 8192;
     Solution solution;
-    int y = solution.climbStairs(x);
-    cout << "x sqrt is: " << y << endl;  
-    // solution.show_string(after_operation);
+    struct ListNode * lls = nullptr;
+    // struct ListNode * ls = new struct ListNode;
+    
+    // lls = solution.deleteDuplicates(ls);
     return 0;
 }
 
@@ -59,7 +71,7 @@ void Solution::show_string(string str)
     
 }
 
-int Solution::climbStairs(int n)
+ListNode* Solution::deleteDuplicates(ListNode* head)
 {
     cout << "------------- start ---------" << endl;
     int retval;
