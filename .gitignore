@@ -30,10 +30,14 @@
 *.symtypes
 modules.builtin
 Module.symvers
+
 # clion , vscode ignore
 .vscode
 .idea
+CMakeFiles
 cmake-build-debug
+cmake_install.cmake
+CMakeCache.txt
 .*.s*p
 *.o.cmd
 *.mode.o.cmd
