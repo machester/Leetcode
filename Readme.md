@@ -1,6 +1,6 @@
 # LeetCode Question and Answer
 
-## program language using c
-
-## TODO List
-[] every day delive a question
+- program language using c/c++
+- using Makefile or Cmake as compiler
+- TODO List
+	- [ ] 
