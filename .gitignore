@@ -17,6 +17,7 @@
 *.bz2
 *.dwo
 *.elf
+*.exe
 *.lst
 *.lz4
 *.lzo
