@@ -1,35 +1,18 @@
-/**
- * Question
-You are climbing a stair case. It takes n steps to reach to the top.
 
-Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
-
-Note: Given n will be a positive integer.
-
-Example 1:
-
-Input: 2
-Output: 2
-Explanation: There are two ways to climb to the top.
-1. 1 step + 1 step
-2. 2 steps
-
-Example 2:
-
-Input: 3
-Output: 3
-Explanation: There are three ways to climb to the top.
-1. 1 step + 1 step + 1 step
-2. 1 step + 2 steps
-3. 2 steps + 1 step
-*/
-
+/******************************************************************************
+ * Decription:
+ *      every distinct ways in this stair is equal to sum of two before distinct ways climbing.
+ *      example
+ *          6 stairs --------------> 13 distinct ways
+ *          5 stairs --------------> 8 distinct ways
+ *          4 stairs --------------> 5 distinct ways
+ *          3 stairs --------------> 3 distinct ways
+ *          2 stairs --------------> 2 distinct ways
+ *          1 stairs --------------> 1 ways
+******************************************************************************/
 #include <iostream>
 #include <vector>
 #include <string>
-#include <algorithm>
-
-// #include <cstring>
 
 using namespace std;
 
@@ -37,52 +20,89 @@ class Solution {
 public:
     ~Solution();
     int climbStairs(int n);
-    void recursive(int input, int& output);
-    void show_string(string str);
+    int rw_climbStairs(int n, int& answer);
 };
 
 int main() 
 {
-    int x = 3;
+    int x = 5;
     Solution solution;
+    cout << "------------- start -----------" << endl;
     int y = solution.climbStairs(x);
-    cout << "need " << y << " steps" << endl;
-    // solution.show_string(after_operation);
+    cout << "clime "<< x <<" stairs, has " << y << " distinct ways" << endl;
     return 0;
-}
-
-void Solution::show_string(string str)
-{
-    cout << "string is : " << str << endl;
 }
 
 int Solution::climbStairs(int n)
 {
-    cout << "------------- start ---------" << endl;
-    cout << "target step is " << n << endl;
-    int val = n;
-    int  counter = 0;
-    
-    if (1 == n || 2 == n)
+    int ret = 0;
+    static int ret1 = 1;
+    static int ret2 = 1;
+    if((1 == n) || (2 == n)) {
         return n;
-        
-    cout << "counter = " << counter << ", val = " << val << endl;
-    Solution::recursive(val, counter);
-    return counter;
+    } else {
+        ret = Solution::rw_climbStairs(n - 1, ret1) + Solution::rw_climbStairs(n - 2, ret1);
+    }
+    cout << "---------> ret = " << ret << endl;
+    return ret;
 }
-void Solution::recursive(int input, int& output)
+int Solution::rw_climbStairs(int n, int& answer)
 {
-    if(input > 0){
-        cout << "input = " << input << ", output = " << output << endl;
-        input = input / 2;
-        output += 1;
-        return Solution::recursive(input, output);
-    } 
-    cout << "-------------------------------------------------"<< endl;
-    cout << "input = " << input << ", output = " << output << endl;
+    static int loops = 0;
+    
+    if(n > 2) {
+        loops++;
+        answer += answer;
+        cout << "loops = " << loops
+            << " , n = " << n
+            << " , answer = " << answer << endl;
+        return (Solution::rw_climbStairs(n - 1, answer) + Solution::rw_climbStairs(n - 2, answer));
+    }
+    return answer;
 }
+
 Solution::~Solution() 
 {
     cout << "------------- end ---------" << endl;    
 }
 
+
+# if 0  // out of time
+using namespace std;
+
+class Solution {
+public:
+    ~Solution();
+    int climbStairs(int n);
+};
+
+int main() 
+{
+    int x = 6;
+    Solution solution;
+    cout << "------------- start -----------" << endl;
+    int y = solution.climbStairs(x);
+    cout << "clime "<< x <<" stairs, has " << y << " distinct ways" << endl;
+    return 0;
+}
+
+int Solution::climbStairs(int n)
+{
+    // static int distict_ways = 0;
+    static int loops = 0;
+    loops++;
+    cout << "loops = " << loops
+        << " , n = " << n << endl;
+    if(1 == n || 2 == n)
+        return n;
+    else {
+        return (Solution::climbStairs(n - 1) + Solution::climbStairs(n - 2));
+    }
+}
+
+Solution::~Solution() 
+{
+    cout << "------------- end ---------" << endl;    
+}
+
+#endif 
