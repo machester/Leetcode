@@ -38,18 +38,18 @@ public:
 using namespace std;
 
 
+ struct ListNode {
+     int val;
+     ListNode *next;
+ };
 
 class Solution {
 public:
-    struct ListNode {
-        int val;
-        ListNode *next;
-        ListNode(int x) : val(x), next(NULL) {};
-    };
-    
     ~Solution();
     ListNode* deleteDuplicates(ListNode* head);
-    void show_string(string str);
+    void show_string(ListNode *str);
+    void remove_current_node(ListNode *prev, ListNode *next);
+    void ListNode * init_list(ListNode * var);
     
 
 };
@@ -61,30 +61,37 @@ int main()
     struct ListNode * lls = nullptr;
     // struct ListNode * ls = new struct ListNode;
     
-    // lls = solution.deleteDuplicates(ls);
     return 0;
 }
 
-void Solution::show_string(string str)
+void Solution::show_string(ListNode *str)
 {
-    cout << "string is : " << str << endl;
-    
+    cout << "string is : " << end;
+    for(ListNode *item = str; item != null; item = item ->next) {
+    	cout << "---> " << item->val
+		<< ", " << end;
+    }
+    cout << endl;
 }
 
+void Solution::remove_current_node(ListNode *prev, ListNode *next)
+{
+	
+	prev->next = next;
+}
+    
 ListNode* Solution::deleteDuplicates(ListNode* head)
 {
     cout << "------------- start ---------" << endl;
     int retval;
     
-    
-    
-    
-    
-    
-    
-    
-    
     return retval;    
+}
+
+void ListNode * init_list(ListNode * var)
+{
+	newList = new ListNode();
+
 }
 
 Solution::~Solution() 
