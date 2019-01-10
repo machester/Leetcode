@@ -33,7 +33,8 @@ public:
 #include <string>
 
 // #include <cstring>
-
+#define NORMALLY_LIST               1
+#define SPECIFICAL_LIST             0
 
  typedef struct ListNode {
      int val;
@@ -61,18 +62,10 @@ int main()
     list_node * lls = solution.list_head_init();
     solution.set_current_node_val(lls, 1);
     
-    
-    // init sorted list
-    // list_node * node_ptr;
-    // for(int loop = 2; loop < 10; loop++) {
-    //     node_ptr = solution.list_create_node();
-    //     solution.set_current_node_val(node_ptr, loop);
-    //     solution.add_node_tail(lls, node_ptr);
-    // }
-    
     // init duplicates sorted list
+#if NORMALLY_LIST
     list_node * node_ptr;
-    for(int loop = 2; loop < 10; loop++) {
+    for(int loop = 2; loop < 15; loop++) {
         node_ptr = solution.list_create_node();
         solution.set_current_node_val(node_ptr, loop);
         solution.add_node_tail(lls, node_ptr);
@@ -82,8 +75,15 @@ int main()
             solution.add_node_tail(lls, node_ptr);
         }
     }
-    
-    
+#endif
+#if SPECIFICAL_LIST
+    list_node * node_ptr;
+    for(int loop = 1; loop < 3; loop++) {
+        node_ptr = solution.list_create_node();
+        solution.set_current_node_val(node_ptr, 1);
+        solution.add_node_tail(lls, node_ptr);
+    }
+#endif
     
     
     solution.show_list(lls);
@@ -109,7 +109,7 @@ list_node * Solution::deleteDuplicates(list_node * head)
     list_node * prev_node = head;
     list_node * curr_node = head->next;
     
-    while(curr_node != nullptr) {
+    while(curr_node != nullptr) {               // lopp controller
         if(prev_node->val == curr_node->val) {
 
             if(nullptr == curr_node->next) {        // current node is the last node
@@ -117,17 +117,17 @@ list_node * Solution::deleteDuplicates(list_node * head)
                 prev_node->next = nullptr;
                 delete curr_node;
                 curr_node = nullptr;            
-            } else {            // current node not the last node
+            } else {            // current node is not the last node
                 free_ptr = curr_node;
                 curr_node = curr_node->next;
+                // link node make sure is still a linked list. if delete this can make it linked
+                prev_node->next = curr_node;
                 std::cout << "free_ptr -> val = " << free_ptr->val << std::endl;
                 delete free_ptr;
                 free_ptr = nullptr;
             }
-        }
-        if(curr_node != nullptr) {      // make sure if current node is last one and deleted
-            // link node make sure is still a linked list. if delete this can make it linked
-            prev_node->next = curr_node;
+        }   
+        else {      // node is not duplicated
             // move prev_node and current node ptr
             prev_node = curr_node;
             curr_node = curr_node->next;
