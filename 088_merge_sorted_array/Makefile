@@ -17,4 +17,5 @@ ALL: $(TAR).o
 clean:
 	rm -rvf $(TAR).o
 	rm -rvf $(TAR)
+	rm -rvf *.exe*
 
