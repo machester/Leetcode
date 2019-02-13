@@ -66,6 +66,9 @@ void Solution::merge(vector<int>& nums1, int m, vector<int>& nums2, int n)
     vector<int>::iterator item_nums1;
     vector<int>::iterator item_nums2;
     
+    while
+    
+    
     for(item_nums1 = nums1.begin(); item_nums1 != nums1.end(); item_nums1++) {
         for(item_nums2 = nums2.begin(); item_nums2 != nums2.end(); item_nums2++) {
             if(*item_nums2 <= *item_nums1) {
@@ -90,3 +93,55 @@ Solution::~Solution()
     std::cout << "------------- end ---------" << std::endl;    
 }
 
+
+#if 0
+void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        //从尾部开始，向前移动
+        int tail=m+n-1;
+        m--;
+        n--;
+        while(m>=0 && n>=0)
+        {
+            if(nums1[m]>=nums2[n])
+                nums1[tail--]=nums1[m--];
+            else
+                nums1[tail--]=nums2[n--];
+        }
+        //nums1中剩余的前n个数复制到nums1
+        while(n>=0)
+            nums1[n]=nums2[n--];
+        
+        return ;
+    }
+    
+    
+    
+class Solution {
+public:
+    void static merge(vector<int> &nums1, int m, vector<int> &nums2, int n) {
+        vector<int> vec;
+        for (int i=0;i<m;i++)
+            vec.push_back(nums1[i]);
+        int i=0;
+        int j=0;
+        for (int k = 0; k < nums1.size(); ++k) {
+            if (i > m-1) {
+                nums1[k] = nums2[j];
+                j++;
+            }
+            else if (j > n-1) {
+                nums1[k] = vec[i];
+                i++;
+            }
+            else if (vec[i] < nums2[j]) {
+                nums1[k] = vec[i];
+                i++;
+            }
+            else {
+                nums1[k] = nums2[j];
+                j++;
+            }
+        }
+    }
+};
+#endif

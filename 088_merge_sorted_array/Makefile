@@ -5,11 +5,13 @@
 # show g++ version
 # $(shell echo `g++ -v`)
 
-CC = g++
+
+# CC = g++
+CC = gcc
 
 TAR = 088_merge_sorted_array
-SOURCE = $(TAR).cpp
-
+#SOURCE = $(TAR).cpp
+SOURCE = $(TAR).c
 # $(shell echo "source = "$(SOURCE))
 
 ALL: $(TAR).o
