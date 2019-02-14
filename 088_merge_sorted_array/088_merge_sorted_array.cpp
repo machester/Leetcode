@@ -22,6 +22,7 @@ public:
     }
 };
 
+* Notice : 归并排序
 */
 
 #include <iostream>
@@ -95,6 +96,66 @@ Solution::~Solution()
 
 
 #if 0
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        vector<int> temp;
+        
+        int i = 0, j = 0;
+        while(i<m && j<n){
+            if(nums1[i] <= nums2[j]){
+                temp.push_back(nums1[i]);
+                i++;
+            }
+            else{
+                temp.push_back(nums2[j]);
+                j++;
+            }
+        }
+        if(i == m){
+            while(j<n){
+                temp.push_back(nums2[j]);
+                j++;
+            }
+        }
+        if(j == n){
+            while(i<m){
+                temp.push_back(nums1[i]);
+                i++;
+            }
+        }
+        nums1 = temp;
+    }
+};
+
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        if (!nums2.empty()) {
+            auto nums1_index = nums1.end() - 1 - nums2.size();
+            auto nums2_index = nums2.end() - 1;
+            
+            for (auto i = nums1.end() - 1; i >= nums1.begin(); i--) {
+                if (nums1_index >= nums1.begin() && nums2_index >= nums2.begin()) {
+                    if (*nums1_index > *nums2_index) {
+                        *i = *nums1_index;
+                        nums1_index--;
+                    } else {
+                        *i = *nums2_index;
+                        nums2_index--;
+                    }
+                } else if (nums2_index < nums2.begin()) {
+                    *i = *nums1_index;
+                    nums1_index--;
+                } else if (nums1_index < nums1.begin()) {
+                    *i = *nums2_index;
+                    nums2_index--;
+                }
+            }
+        }
+    }
+};
+
 void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         //从尾部开始，向前移动
         int tail=m+n-1;

@@ -6,12 +6,12 @@
 # $(shell echo `g++ -v`)
 
 
-# CC = g++
-CC = gcc
+CC = g++
+# CC = gcc
 
 TAR = 088_merge_sorted_array
-#SOURCE = $(TAR).cpp
-SOURCE = $(TAR).c
+SOURCE = $(TAR).cpp
+# SOURCE = $(TAR).c
 # $(shell echo "source = "$(SOURCE))
 
 ALL: $(TAR).o
