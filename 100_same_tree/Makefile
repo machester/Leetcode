@@ -5,11 +5,13 @@
 # show g++ version
 # $(shell echo `g++ -v`)
 
+
 CC = g++
+# CC = gcc
 
-TAR = 100_same_tree
+TAR = 100_same_tree 
 SOURCE = $(TAR).cpp
-
+# SOURCE = $(TAR).c
 # $(shell echo "source = "$(SOURCE))
 
 ALL: $(TAR).o
@@ -17,4 +19,5 @@ ALL: $(TAR).o
 clean:
 	rm -rvf $(TAR).o
 	rm -rvf $(TAR)
+	rm -rvf *.exe*
 
