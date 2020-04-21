@@ -26,7 +26,9 @@ char * invert_func(char *str, int len)
         return NULL;
     if(1 == len)
         return str;
-    while (*ptr_head != *ptr_tail) {
+    // 控制循环，并且保证前后指向指针不会交换位置s
+    while (ptr_head != ptr_tail && (ptr_tail - ptr_head) > 0) {
+        // printf("ptr_tail - ptr_head = %ld\n", ptr_tail - ptr_head);
         tmp = *ptr_tail;
         *ptr_tail = *ptr_head;
         *ptr_head = tmp;
@@ -43,7 +45,7 @@ int main(void)
     char *invert_str;
     int str_len;
     
-    // printf("Please input number:");
+    // printf("Please input string:");
     scanf("%s", input_str);
     str_len = strlen(input_str);
     // printf("input str: str_len = %d, str: %s ----\n", str_len, input_str);
